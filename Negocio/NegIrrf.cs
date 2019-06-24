@@ -80,7 +80,8 @@ namespace Negocio
             Crud = new CRUD();
             SQL = "SELECT Id, Competencia, Limite, Porc, Desconto " +
                   "FROM IRRF " +
-                  "WHERE Competencia = @Competencia";
+                  "WHERE Competencia = @Competencia " +
+                  "ORDER BY Limite ASC";
             try
             {
 
@@ -98,15 +99,24 @@ namespace Negocio
         {
             decimal porc = 0;
             Crud = new CRUD();
-            SQL = "SELECT Min(Porc) " +
+            SQL = "SELECT Max(Porc) " +
                   "FROM IRRF " +
-                  "WHERE @salario <= Limite";
+                  "WHERE @salario >= Limite";
             try
             {
                 Crud.LimparParametro();
                 Crud.AdicionarParamentro("salario", salario);
-                porc = decimal.Parse(Crud.Executar(CommandType.Text, SQL).ToString());
-                return porc;
+
+                if (Crud.Executar(CommandType.Text, SQL).ToString() == "")
+                {
+                    return porc = 0;
+                }
+                else
+                {
+                    porc = decimal.Parse(Crud.Executar(CommandType.Text, SQL).ToString());
+                    return porc;
+                }
+
             }
             catch (Exception ex)
             {
@@ -118,15 +128,23 @@ namespace Negocio
         {
             decimal porc = 0;
             Crud = new CRUD();
-            SQL = "SELECT Min(Desconto) " +
+            SQL = "SELECT Max(Desconto) " +
                   "FROM IRRF " +
-                  "WHERE @salario <= Limite";
+                  "WHERE @salario >= Limite";
             try
             {
                 Crud.LimparParametro();
                 Crud.AdicionarParamentro("salario", salario);
-                porc = decimal.Parse(Crud.Executar(CommandType.Text, SQL).ToString());
-                return porc;
+                if (Crud.Executar(CommandType.Text, SQL).ToString() == "")
+                {
+                    return porc = 0;
+                }
+                else
+                {
+                    porc = decimal.Parse(Crud.Executar(CommandType.Text, SQL).ToString());
+                    return porc;
+                }
+
             }
             catch (Exception ex)
             {
@@ -134,5 +152,26 @@ namespace Negocio
                 throw new Exception(ex.Message);
             }
         }
+        public decimal Limite(DateTime competencia)
+        {
+            decimal limite = 0;
+            Crud = new CRUD();
+            SQL = "SELECT Min(Limite) " +
+                  "FROM IRRF " +
+                  "WHERE Competencia = @Competencia";
+            try
+            {
+                Crud.LimparParametro();
+                Crud.AdicionarParamentro("Competencia", competencia);
+                limite = decimal.Parse(Crud.Executar(CommandType.Text, SQL).ToString());
+                return limite;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+        }
+
     }
 }

@@ -81,7 +81,8 @@ namespace Negocio
             Crud = new CRUD();
             SQL = "SELECT Id, Competencia, Faixa, Teto_Faixa, Porc_Faixa " +
                   "FROM INSS " +
-                  "WHERE Competencia = @Competencia";
+                  "WHERE Competencia = @Competencia " +
+                  "ORDER BY Teto_Faixa ASC";
             try
             {
 
@@ -98,14 +99,52 @@ namespace Negocio
         public decimal PorcTeto(decimal salario)
         {
             decimal porc = 0;
+            decimal teto = 0;
             Crud = new CRUD();
+            DateTime dtCompetencia = DateTime.Parse(DateTime.Now.ToString("MM/yyyy"));
+            teto = Teto(dtCompetencia);
+
             SQL = "SELECT Min(Porc_Faixa) " +
                   "FROM INSS " +
-                  "WHERE @salario <= Teto_Faixa";
+                  "WHERE Teto_Faixa >= @salario";
+            try
+            {
+                if (salario >= teto)
+                {
+                    salario = teto;
+                }
+
+                Crud.LimparParametro();
+                Crud.AdicionarParamentro("salario", salario);
+                if (Crud.Executar(CommandType.Text, SQL).ToString() == "")
+                {
+                    return porc = 0;
+                }
+                else
+                {
+                    porc = decimal.Parse(Crud.Executar(CommandType.Text, SQL).ToString());
+                    return porc;
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public decimal Teto(DateTime competencia)
+        {
+            decimal porc = 0;
+            Crud = new CRUD();
+            SQL = "SELECT Max(Teto_Faixa) " +
+                  "FROM INSS " +
+                  "WHERE Competencia = @Competencia";
             try
             {
                 Crud.LimparParametro();
-                Crud.AdicionarParamentro("salario", salario);
+                Crud.AdicionarParamentro("Competencia", competencia);
                 porc = decimal.Parse(Crud.Executar(CommandType.Text, SQL).ToString());
                 return porc;
             }

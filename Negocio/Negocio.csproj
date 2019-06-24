@@ -45,6 +45,7 @@
     <Compile Include="NegInss.cs" />
     <Compile Include="NegIrrf.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ValidarNumeros.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BancoDados\BancoDados.csproj">
