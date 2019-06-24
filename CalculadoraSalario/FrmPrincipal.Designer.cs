@@ -45,14 +45,14 @@
             this.BtnAdicionar = new System.Windows.Forms.Button();
             this.BtnRemover = new System.Windows.Forms.Button();
             this.DgvListaOutVlr = new System.Windows.Forms.DataGridView();
+            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CbDesconto = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.TxtDep = new System.Windows.Forms.TextBox();
             this.TxtResumo = new System.Windows.Forms.RichTextBox();
             this.LblInfDep = new System.Windows.Forms.Label();
             this.LblinfVT = new System.Windows.Forms.Label();
-            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LblInfOutroValores = new System.Windows.Forms.Label();
             this.MenuPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListaOutVlr)).BeginInit();
@@ -201,6 +201,7 @@
             this.BtnRemover.TabIndex = 9;
             this.BtnRemover.Text = "Remover";
             this.BtnRemover.UseVisualStyleBackColor = true;
+            this.BtnRemover.Click += new System.EventHandler(this.BtnRemover_Click);
             // 
             // DgvListaOutVlr
             // 
@@ -216,10 +217,30 @@
             this.DgvListaOutVlr.MultiSelect = false;
             this.DgvListaOutVlr.Name = "DgvListaOutVlr";
             this.DgvListaOutVlr.ReadOnly = true;
+            this.DgvListaOutVlr.RowHeadersWidth = 5;
             this.DgvListaOutVlr.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvListaOutVlr.Size = new System.Drawing.Size(354, 82);
             this.DgvListaOutVlr.TabIndex = 10;
             this.DgvListaOutVlr.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListaOutVlr_CellDoubleClick);
+            // 
+            // Tipo
+            // 
+            this.Tipo.DataPropertyName = "Tipo";
+            this.Tipo.HeaderText = "Tipo";
+            this.Tipo.Name = "Tipo";
+            this.Tipo.ReadOnly = true;
+            this.Tipo.Width = 155;
+            // 
+            // Valor
+            // 
+            this.Valor.DataPropertyName = "Valor";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "N2";
+            this.Valor.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Valor.HeaderText = "Valor";
+            this.Valor.Name = "Valor";
+            this.Valor.ReadOnly = true;
+            this.Valor.Width = 155;
             // 
             // CbDesconto
             // 
@@ -280,25 +301,6 @@
             this.LblinfVT.TabIndex = 16;
             this.LblinfVT.Text = "%";
             this.LblinfVT.Visible = false;
-            // 
-            // Tipo
-            // 
-            this.Tipo.DataPropertyName = "Tipo";
-            this.Tipo.HeaderText = "Tipo";
-            this.Tipo.Name = "Tipo";
-            this.Tipo.ReadOnly = true;
-            this.Tipo.Width = 155;
-            // 
-            // Valor
-            // 
-            this.Valor.DataPropertyName = "Valor";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "N2";
-            this.Valor.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Valor.HeaderText = "Valor";
-            this.Valor.Name = "Valor";
-            this.Valor.ReadOnly = true;
-            this.Valor.Width = 155;
             // 
             // LblInfOutroValores
             // 

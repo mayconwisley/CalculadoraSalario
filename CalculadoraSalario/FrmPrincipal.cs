@@ -35,7 +35,7 @@ namespace CalculadoraSalario
         #endregion
 
         #region Variaveis e Objetos
-        decimal vlrSalario = 0, vlrPercVT = 0, vlrOutroDesconto = 0, vlrIRRF = 0;
+        decimal vlrSalario = 0, vlrPercVT = 0, vlrOutroDesconto = 0, vlrProvento = 0, vlrDesconto = 0, vlrTotalOutro;
 
         decimal calcSalario = 0, calcVT = 0;
 
@@ -122,7 +122,7 @@ namespace CalculadoraSalario
             calcVT = CalculoVT.ValeTransporte(vlrSalario, vlrPercVT);
             calcFGTS = CalculoFGTS.FGTS(vlrSalario, 8);
 
-            calcSalario = vlrSalario - (calcINSS + calcIRRF + calcVT);
+            calcSalario = (vlrSalario - (calcINSS + calcIRRF + calcVT)) + vlrOutroDesconto;
 
             TxtResumo.Text = "INSS - " + porcInss.ToString("#00.00") + " .........: " + calcINSS.ToString("#,##0.00") +
                              "\nIRRF - " + porcIrrf.ToString("#00.00") + " - " + descIrrf.ToString("#,000.00") + ".: " + calcIRRF.ToString("#,##0.00") +
@@ -138,33 +138,48 @@ namespace CalculadoraSalario
             outroValores = new DataTable();
             try
             {
-
-
-
-                               
-
-                DgvListaOutVlr.Rows.Add(tipo);
-                DgvListaOutVlr.Rows.Add(Valor);
-
-                //outroValores.Columns.Add("Tipo", Type.GetType("System.String"));
-                //outroValores.Columns.Add("Valor", Type.GetType("System.Decimal"));
-
-                //DataRow row = outroValores.NewRow();
-                //row["Tipo"] = tipo;
-                //row["Valor"] = valor;
-
-                //outroValores.Rows.Add(row);
-
-                //return outroValores;
+                DgvListaOutVlr.Rows.Add(tipo, valor);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                //return null;
             }
-
-
         }
+
+        private void Calculo_OutrasVerbas()
+        {
+            string strTipo;
+            try
+            {
+                vlrProvento = 0;
+                vlrDesconto = 0;
+                foreach (DataGridViewRow row in DgvListaOutVlr.Rows)
+                {
+                    strTipo = row.Cells["Tipo"].Value.ToString();
+                    if (strTipo == "Provento")
+                    {
+                        vlrProvento += decimal.Parse(row.Cells["Valor"].Value.ToString());
+                    }
+                    else
+                    {
+                        vlrDesconto += decimal.Parse(row.Cells["Valor"].Value.ToString());
+                    }
+
+                }
+
+                vlrOutroDesconto = vlrProvento - vlrDesconto;
+
+                LblInfOutroValores.Text = "Proventos: " + vlrProvento.ToString("#,#00.00") +
+                                          "\nDescontos: " + vlrDesconto.ToString("#,#00.00") +
+                                          "\nTotal:" + vlrOutroDesconto.ToString("#,#00.00");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+
         private bool RemoverOutrosDescontos(int indexOutroValor)
         {
             try
@@ -266,6 +281,7 @@ namespace CalculadoraSalario
             vlrOutroDesconto = decimal.Parse(TxtOutrosVlr.Text.Trim());
 
             AdicionarOutrosDescontos(strTipo, vlrOutroDesconto);
+            Calculo_OutrasVerbas();
         }
 
         private void DgvListaOutVlr_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -278,6 +294,12 @@ namespace CalculadoraSalario
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void BtnRemover_Click(object sender, EventArgs e)
+        {
+            RemoverOutrosDescontos(idOutrosValores);
+            Calculo_OutrasVerbas();
         }
 
         private void TxtDep_Enter(object sender, EventArgs e)
