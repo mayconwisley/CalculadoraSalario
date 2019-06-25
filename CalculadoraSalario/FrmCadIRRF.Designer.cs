@@ -131,7 +131,7 @@
             this.BtnExcluir.Location = new System.Drawing.Point(263, 70);
             this.BtnExcluir.Name = "BtnExcluir";
             this.BtnExcluir.Size = new System.Drawing.Size(75, 23);
-            this.BtnExcluir.TabIndex = 18;
+            this.BtnExcluir.TabIndex = 7;
             this.BtnExcluir.Text = "Excluir";
             this.BtnExcluir.UseVisualStyleBackColor = true;
             this.BtnExcluir.Click += new System.EventHandler(this.BtnExcluir_Click);
@@ -142,7 +142,7 @@
             this.BtnAlterar.Location = new System.Drawing.Point(263, 41);
             this.BtnAlterar.Name = "BtnAlterar";
             this.BtnAlterar.Size = new System.Drawing.Size(75, 23);
-            this.BtnAlterar.TabIndex = 19;
+            this.BtnAlterar.TabIndex = 6;
             this.BtnAlterar.Text = "Alterar";
             this.BtnAlterar.UseVisualStyleBackColor = true;
             this.BtnAlterar.Click += new System.EventHandler(this.BtnAlterar_Click);
@@ -152,7 +152,7 @@
             this.BtnGravar.Location = new System.Drawing.Point(263, 12);
             this.BtnGravar.Name = "BtnGravar";
             this.BtnGravar.Size = new System.Drawing.Size(75, 23);
-            this.BtnGravar.TabIndex = 20;
+            this.BtnGravar.TabIndex = 5;
             this.BtnGravar.Text = "Gravar";
             this.BtnGravar.UseVisualStyleBackColor = true;
             this.BtnGravar.Click += new System.EventHandler(this.BtnGravar_Click);
@@ -171,9 +171,12 @@
             this.TxtDesconto.Location = new System.Drawing.Point(177, 64);
             this.TxtDesconto.Name = "TxtDesconto";
             this.TxtDesconto.Size = new System.Drawing.Size(67, 20);
-            this.TxtDesconto.TabIndex = 16;
+            this.TxtDesconto.TabIndex = 4;
             this.TxtDesconto.Text = "0,00";
             this.TxtDesconto.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TxtDesconto.TextChanged += new System.EventHandler(this.TxtDesconto_TextChanged);
+            this.TxtDesconto.Enter += new System.EventHandler(this.TxtDesconto_Enter);
+            this.TxtDesconto.Leave += new System.EventHandler(this.TxtDesconto_Leave);
             // 
             // label3
             // 
@@ -189,18 +192,24 @@
             this.TxtPorc.Location = new System.Drawing.Point(90, 64);
             this.TxtPorc.Name = "TxtPorc";
             this.TxtPorc.Size = new System.Drawing.Size(81, 20);
-            this.TxtPorc.TabIndex = 14;
+            this.TxtPorc.TabIndex = 3;
             this.TxtPorc.Text = "0,00";
             this.TxtPorc.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TxtPorc.TextChanged += new System.EventHandler(this.TxtPorc_TextChanged);
+            this.TxtPorc.Enter += new System.EventHandler(this.TxtPorc_Enter);
+            this.TxtPorc.Leave += new System.EventHandler(this.TxtPorc_Leave);
             // 
             // TxtLimite
             // 
             this.TxtLimite.Location = new System.Drawing.Point(15, 64);
             this.TxtLimite.Name = "TxtLimite";
             this.TxtLimite.Size = new System.Drawing.Size(69, 20);
-            this.TxtLimite.TabIndex = 13;
+            this.TxtLimite.TabIndex = 2;
             this.TxtLimite.Text = "0,00";
             this.TxtLimite.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TxtLimite.TextChanged += new System.EventHandler(this.TxtLimite_TextChanged);
+            this.TxtLimite.Enter += new System.EventHandler(this.TxtLimite_Enter);
+            this.TxtLimite.Leave += new System.EventHandler(this.TxtLimite_Leave);
             // 
             // label2
             // 
@@ -217,7 +226,7 @@
             this.MktComp.Mask = "00/0000";
             this.MktComp.Name = "MktComp";
             this.MktComp.Size = new System.Drawing.Size(69, 20);
-            this.MktComp.TabIndex = 11;
+            this.MktComp.TabIndex = 1;
             // 
             // label1
             // 

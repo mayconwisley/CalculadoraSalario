@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.MenuPrincipal = new System.Windows.Forms.MenuStrip();
             this.MenuTabelas = new System.Windows.Forms.ToolStripMenuItem();
             this.SubTabelaInss = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,6 +54,7 @@
             this.LblInfDep = new System.Windows.Forms.Label();
             this.LblinfVT = new System.Windows.Forms.Label();
             this.LblInfOutroValores = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.MenuPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListaOutVlr)).BeginInit();
             this.SuspendLayout();
@@ -110,7 +111,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 24);
+            this.label1.Location = new System.Drawing.Point(12, 22);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(66, 13);
             this.label1.TabIndex = 1;
@@ -118,10 +119,10 @@
             // 
             // TxtSalario
             // 
-            this.TxtSalario.Location = new System.Drawing.Point(12, 40);
+            this.TxtSalario.Location = new System.Drawing.Point(12, 38);
             this.TxtSalario.Name = "TxtSalario";
-            this.TxtSalario.Size = new System.Drawing.Size(92, 20);
-            this.TxtSalario.TabIndex = 2;
+            this.TxtSalario.Size = new System.Drawing.Size(76, 20);
+            this.TxtSalario.TabIndex = 1;
             this.TxtSalario.Text = "0,00";
             this.TxtSalario.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.TxtSalario.TextChanged += new System.EventHandler(this.TxtSalario_TextChanged);
@@ -130,10 +131,10 @@
             // 
             // BtnCalcular
             // 
-            this.BtnCalcular.Location = new System.Drawing.Point(291, 40);
+            this.BtnCalcular.Location = new System.Drawing.Point(291, 38);
             this.BtnCalcular.Name = "BtnCalcular";
             this.BtnCalcular.Size = new System.Drawing.Size(75, 23);
-            this.BtnCalcular.TabIndex = 4;
+            this.BtnCalcular.TabIndex = 7;
             this.BtnCalcular.Text = "Calcular";
             this.BtnCalcular.UseVisualStyleBackColor = true;
             this.BtnCalcular.Click += new System.EventHandler(this.BtnCalcular_Click);
@@ -141,21 +142,21 @@
             // CbValeTransporte
             // 
             this.CbValeTransporte.AutoSize = true;
-            this.CbValeTransporte.Location = new System.Drawing.Point(110, 42);
+            this.CbValeTransporte.Location = new System.Drawing.Point(110, 40);
             this.CbValeTransporte.Name = "CbValeTransporte";
             this.CbValeTransporte.Size = new System.Drawing.Size(129, 17);
-            this.CbValeTransporte.TabIndex = 5;
+            this.CbValeTransporte.TabIndex = 4;
             this.CbValeTransporte.Text = "Usa Vale Transporte?";
             this.CbValeTransporte.UseVisualStyleBackColor = true;
             this.CbValeTransporte.CheckedChanged += new System.EventHandler(this.CbValeTransporte_CheckedChanged);
             // 
             // TxtPorcVT
             // 
-            this.TxtPorcVT.Location = new System.Drawing.Point(245, 40);
+            this.TxtPorcVT.Location = new System.Drawing.Point(245, 38);
             this.TxtPorcVT.Name = "TxtPorcVT";
             this.TxtPorcVT.Size = new System.Drawing.Size(20, 20);
             this.TxtPorcVT.TabIndex = 6;
-            this.TxtPorcVT.Text = "6";
+            this.TxtPorcVT.Text = "0";
             this.TxtPorcVT.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.TxtPorcVT.Visible = false;
             this.TxtPorcVT.TextChanged += new System.EventHandler(this.TxtPorcVT_TextChanged);
@@ -165,7 +166,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 104);
+            this.label2.Location = new System.Drawing.Point(12, 102);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(76, 13);
             this.label2.TabIndex = 7;
@@ -173,10 +174,10 @@
             // 
             // TxtOutrosVlr
             // 
-            this.TxtOutrosVlr.Location = new System.Drawing.Point(12, 120);
+            this.TxtOutrosVlr.Location = new System.Drawing.Point(12, 118);
             this.TxtOutrosVlr.Name = "TxtOutrosVlr";
-            this.TxtOutrosVlr.Size = new System.Drawing.Size(92, 20);
-            this.TxtOutrosVlr.TabIndex = 8;
+            this.TxtOutrosVlr.Size = new System.Drawing.Size(76, 20);
+            this.TxtOutrosVlr.TabIndex = 3;
             this.TxtOutrosVlr.Text = "0,00";
             this.TxtOutrosVlr.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.TxtOutrosVlr.TextChanged += new System.EventHandler(this.TxtOutrosVlr_TextChanged);
@@ -185,17 +186,17 @@
             // 
             // BtnAdicionar
             // 
-            this.BtnAdicionar.Location = new System.Drawing.Point(206, 118);
+            this.BtnAdicionar.Location = new System.Drawing.Point(206, 116);
             this.BtnAdicionar.Name = "BtnAdicionar";
             this.BtnAdicionar.Size = new System.Drawing.Size(79, 23);
-            this.BtnAdicionar.TabIndex = 9;
+            this.BtnAdicionar.TabIndex = 8;
             this.BtnAdicionar.Text = "Adicionar";
             this.BtnAdicionar.UseVisualStyleBackColor = true;
             this.BtnAdicionar.Click += new System.EventHandler(this.BtnAdicionar_Click);
             // 
             // BtnRemover
             // 
-            this.BtnRemover.Location = new System.Drawing.Point(287, 118);
+            this.BtnRemover.Location = new System.Drawing.Point(287, 116);
             this.BtnRemover.Name = "BtnRemover";
             this.BtnRemover.Size = new System.Drawing.Size(79, 23);
             this.BtnRemover.TabIndex = 9;
@@ -213,7 +214,7 @@
             this.DgvListaOutVlr.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Tipo,
             this.Valor});
-            this.DgvListaOutVlr.Location = new System.Drawing.Point(12, 146);
+            this.DgvListaOutVlr.Location = new System.Drawing.Point(12, 144);
             this.DgvListaOutVlr.MultiSelect = false;
             this.DgvListaOutVlr.Name = "DgvListaOutVlr";
             this.DgvListaOutVlr.ReadOnly = true;
@@ -234,9 +235,9 @@
             // Valor
             // 
             this.Valor.DataPropertyName = "Valor";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "N2";
-            this.Valor.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle8.Format = "N2";
+            this.Valor.DefaultCellStyle = dataGridViewCellStyle8;
             this.Valor.HeaderText = "Valor";
             this.Valor.Name = "Valor";
             this.Valor.ReadOnly = true;
@@ -245,17 +246,17 @@
             // CbDesconto
             // 
             this.CbDesconto.AutoSize = true;
-            this.CbDesconto.Location = new System.Drawing.Point(110, 122);
+            this.CbDesconto.Location = new System.Drawing.Point(110, 120);
             this.CbDesconto.Name = "CbDesconto";
             this.CbDesconto.Size = new System.Drawing.Size(72, 17);
-            this.CbDesconto.TabIndex = 11;
+            this.CbDesconto.TabIndex = 5;
             this.CbDesconto.Text = "Desconto";
             this.CbDesconto.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 63);
+            this.label3.Location = new System.Drawing.Point(12, 61);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(71, 13);
             this.label3.TabIndex = 12;
@@ -263,10 +264,10 @@
             // 
             // TxtDep
             // 
-            this.TxtDep.Location = new System.Drawing.Point(12, 79);
+            this.TxtDep.Location = new System.Drawing.Point(12, 77);
             this.TxtDep.Name = "TxtDep";
-            this.TxtDep.Size = new System.Drawing.Size(92, 20);
-            this.TxtDep.TabIndex = 13;
+            this.TxtDep.Size = new System.Drawing.Size(76, 20);
+            this.TxtDep.TabIndex = 2;
             this.TxtDep.Text = "0";
             this.TxtDep.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.TxtDep.TextChanged += new System.EventHandler(this.TxtDep_TextChanged);
@@ -276,17 +277,17 @@
             // TxtResumo
             // 
             this.TxtResumo.Font = new System.Drawing.Font("Courier New", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtResumo.Location = new System.Drawing.Point(12, 283);
+            this.TxtResumo.Location = new System.Drawing.Point(12, 281);
             this.TxtResumo.Name = "TxtResumo";
             this.TxtResumo.ReadOnly = true;
             this.TxtResumo.Size = new System.Drawing.Size(354, 156);
-            this.TxtResumo.TabIndex = 14;
+            this.TxtResumo.TabIndex = 11;
             this.TxtResumo.Text = "";
             // 
             // LblInfDep
             // 
             this.LblInfDep.AutoSize = true;
-            this.LblInfDep.Location = new System.Drawing.Point(110, 82);
+            this.LblInfDep.Location = new System.Drawing.Point(94, 80);
             this.LblInfDep.Name = "LblInfDep";
             this.LblInfDep.Size = new System.Drawing.Size(28, 13);
             this.LblInfDep.TabIndex = 15;
@@ -295,7 +296,7 @@
             // LblinfVT
             // 
             this.LblinfVT.AutoSize = true;
-            this.LblinfVT.Location = new System.Drawing.Point(271, 43);
+            this.LblinfVT.Location = new System.Drawing.Point(271, 41);
             this.LblinfVT.Name = "LblinfVT";
             this.LblinfVT.Size = new System.Drawing.Size(15, 13);
             this.LblinfVT.TabIndex = 16;
@@ -305,17 +306,29 @@
             // LblInfOutroValores
             // 
             this.LblInfOutroValores.AutoSize = true;
-            this.LblInfOutroValores.Location = new System.Drawing.Point(12, 231);
+            this.LblInfOutroValores.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblInfOutroValores.Location = new System.Drawing.Point(12, 229);
             this.LblInfOutroValores.Name = "LblInfOutroValores";
-            this.LblInfOutroValores.Size = new System.Drawing.Size(28, 13);
+            this.LblInfOutroValores.Size = new System.Drawing.Size(14, 14);
             this.LblInfOutroValores.TabIndex = 17;
-            this.LblInfOutroValores.Text = "0,00";
+            this.LblInfOutroValores.Text = ".";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.label4.Location = new System.Drawing.Point(308, 440);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(58, 9);
+            this.label4.TabIndex = 18;
+            this.label4.Text = "Maycon Wisley";
             // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(378, 458);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.LblInfOutroValores);
             this.Controls.Add(this.LblinfVT);
             this.Controls.Add(this.LblInfDep);
@@ -334,13 +347,13 @@
             this.Controls.Add(this.TxtSalario);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.MenuPrincipal);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MainMenuStrip = this.MenuPrincipal;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmPrincipal";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Calculadora Salário";
+            this.Text = "Calculadora Salário Simples";
             this.MenuPrincipal.ResumeLayout(false);
             this.MenuPrincipal.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListaOutVlr)).EndInit();
@@ -376,6 +389,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Valor;
         private System.Windows.Forms.Label LblInfOutroValores;
+        private System.Windows.Forms.Label label4;
     }
 }
 

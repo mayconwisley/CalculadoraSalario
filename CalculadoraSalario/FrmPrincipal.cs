@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using Calculo.FGTS;
 using Calculo.INSS;
 using Calculo.IRRF;
 using Calculo.Vale_Transporte;
-using Calculo.FGTS;
 using Negocio;
+using System;
+using System.Data;
+using System.Windows.Forms;
 namespace CalculadoraSalario
 {
     public partial class FrmPrincipal : Form
@@ -35,7 +29,7 @@ namespace CalculadoraSalario
         #endregion
 
         #region Variaveis e Objetos
-        decimal vlrSalario = 0, vlrPercVT = 0, vlrOutroDesconto = 0, vlrProvento = 0, vlrDesconto = 0, vlrTotalOutro;
+        decimal vlrSalario = 0, vlrPercVT = 0, vlrOutroDesconto = 0, vlrProvento = 0, vlrDesconto = 0;
 
         decimal calcSalario = 0, calcVT = 0;
 
@@ -128,7 +122,7 @@ namespace CalculadoraSalario
                              "\nIRRF - " + porcIrrf.ToString("#00.00") + " - " + descIrrf.ToString("#,000.00") + ".: " + calcIRRF.ToString("#,##0.00") +
                              "\nFGTS..................: " + calcFGTS.ToString("#,##0.00") +
                              "\nVale Transporte.......: " + calcVT.ToString("#,##0.00") +
-                             "\nOutros Valores........: " + calcIRRF.ToString("#,##0.00") +
+                             "\nOutros Valores........: " + vlrOutroDesconto.ToString("#,##0.00") +
                              "\n\nSalário Liquido.....: " + calcSalario.ToString("#,##0.00");
 
         }
@@ -169,16 +163,15 @@ namespace CalculadoraSalario
 
                 vlrOutroDesconto = vlrProvento - vlrDesconto;
 
-                LblInfOutroValores.Text = "Proventos: " + vlrProvento.ToString("#,#00.00") +
-                                          "\nDescontos: " + vlrDesconto.ToString("#,#00.00") +
-                                          "\nTotal:" + vlrOutroDesconto.ToString("#,#00.00");
+                LblInfOutroValores.Text = "Proventos: " + vlrProvento.ToString("#,##0.00") +
+                                          "\nDescontos: " + vlrDesconto.ToString("#,##0.00") +
+                                          "\nTotal:" + vlrOutroDesconto.ToString("#,##0.00");
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
-
 
         private bool RemoverOutrosDescontos(int indexOutroValor)
         {
@@ -197,6 +190,7 @@ namespace CalculadoraSalario
 
         #endregion
 
+        #region Padrão
         private void CbValeTransporte_CheckedChanged(object sender, EventArgs e)
         {
             if (CbValeTransporte.Checked)
@@ -282,6 +276,7 @@ namespace CalculadoraSalario
 
             AdicionarOutrosDescontos(strTipo, vlrOutroDesconto);
             Calculo_OutrasVerbas();
+            Calculo();
         }
 
         private void DgvListaOutVlr_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -300,6 +295,7 @@ namespace CalculadoraSalario
         {
             RemoverOutrosDescontos(idOutrosValores);
             Calculo_OutrasVerbas();
+            Calculo();
         }
 
         private void TxtDep_Enter(object sender, EventArgs e)
@@ -381,5 +377,6 @@ namespace CalculadoraSalario
         {
             Application.Exit();
         }
+        #endregion
     }
 }

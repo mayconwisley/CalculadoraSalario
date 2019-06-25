@@ -1,14 +1,8 @@
 ﻿using Modelo;
 using Negocio;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace CalculadoraSalario
 {
@@ -18,20 +12,24 @@ namespace CalculadoraSalario
         {
             InitializeComponent();
         }
-
+        #region Classes
         NegDepen negDepen;
         ModDependente modDependente;
+        ValidarNumeros validarNumeros;
+        #endregion
+
+        #region Variaveis e Objetos
         int idDepen;
         DateTime dtCompetencia;
+        #endregion
 
+        #region Funções
         private void Cadastro(char opc)
         {
-
             negDepen = new NegDepen();
             modDependente = new ModDependente();
             try
             {
-
                 modDependente.Id = idDepen;
                 modDependente.Competencia = DateTime.Parse(MktCompetencia.Text);
                 modDependente.Valor = decimal.Parse(TxtValor.Text.Trim());
@@ -80,7 +78,9 @@ namespace CalculadoraSalario
 
             TxtValor.Text = "0,00";
         }
+        #endregion
 
+        #region Padrão
         private void BtnGravar_Click(object sender, EventArgs e)
         {
             Cadastro('G');
@@ -118,5 +118,28 @@ namespace CalculadoraSalario
             MktCompetencia.Text = dtCompetencia.ToString("MM/yyyy");
             ListarDependente(dtCompetencia);
         }
+
+        private void TxtValor_TextChanged(object sender, EventArgs e)
+        {
+            validarNumeros = new ValidarNumeros();
+            TxtValor.Text = validarNumeros.Valor(TxtValor.Text.Trim());
+            TxtValor.Select(TxtValor.Text.Length, 0);
+        }
+
+        private void TxtValor_Leave(object sender, EventArgs e)
+        {
+            validarNumeros = new ValidarNumeros();
+            TxtValor.Text = validarNumeros.ZeroValor(TxtValor.Text.Trim());
+            TxtValor.Text = validarNumeros.FormatarValor(TxtValor.Text.Trim());
+        }
+
+        private void TxtValor_Enter(object sender, EventArgs e)
+        {
+            if (TxtValor.Text == "0,00")
+            {
+                TxtValor.Text = "";
+            }
+        }
+        #endregion
     }
 }

@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BancoDados
 {
-   public class CRUD : Conexao
+    public class CRUD : Conexao
     {
         SQLiteParameterCollection liteParameterCollection = new SQLiteCommand().Parameters;
         SQLiteCommand liteCommand = null;

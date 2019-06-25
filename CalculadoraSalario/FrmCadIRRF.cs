@@ -1,13 +1,6 @@
 ﻿using Modelo;
 using Negocio;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CalculadoraSalario
@@ -18,11 +11,18 @@ namespace CalculadoraSalario
         {
             InitializeComponent();
         }
+        #region Classes
         NegIrrf negIrrf;
         ModIrrf modIrrf;
+        ValidarNumeros validarNumeros;
+        #endregion
+
+        #region Variaveis e Objetos
         int idIrrf;
         DateTime dtCompetencia;
+        #endregion
 
+        #region Funções
         private void Cadastro(char opc)
         {
 
@@ -83,7 +83,9 @@ namespace CalculadoraSalario
             TxtPorc.Text = "0,00";
             TxtLimite.Text = "0,00";
         }
+        #endregion
 
+        #region Padrão
         private void BtnGravar_Click(object sender, EventArgs e)
         {
             Cadastro('G');
@@ -124,5 +126,72 @@ namespace CalculadoraSalario
             MktComp.Text = dtCompetencia.ToString("MM/yyyy");
             ListarIrrf(dtCompetencia);
         }
+
+        private void TxtLimite_TextChanged(object sender, EventArgs e)
+        {
+            validarNumeros = new ValidarNumeros();
+            TxtLimite.Text = validarNumeros.Valor(TxtLimite.Text.Trim());
+            TxtLimite.Select(TxtLimite.Text.Length, 0);
+        }
+
+        private void TxtLimite_Leave(object sender, EventArgs e)
+        {
+            validarNumeros = new ValidarNumeros();
+            TxtLimite.Text = validarNumeros.ZeroValor(TxtLimite.Text.Trim());
+            TxtLimite.Text = validarNumeros.FormatarValor(TxtLimite.Text.Trim());
+        }
+
+        private void TxtLimite_Enter(object sender, EventArgs e)
+        {
+            if (TxtLimite.Text == "0,00")
+            {
+                TxtLimite.Text = "";
+            }
+        }
+
+        private void TxtPorc_TextChanged(object sender, EventArgs e)
+        {
+            validarNumeros = new ValidarNumeros();
+            TxtPorc.Text = validarNumeros.Valor(TxtPorc.Text.Trim());
+            TxtPorc.Select(TxtPorc.Text.Length, 0);
+        }
+
+        private void TxtPorc_Leave(object sender, EventArgs e)
+        {
+            validarNumeros = new ValidarNumeros();
+            TxtPorc.Text = validarNumeros.ZeroValor(TxtPorc.Text.Trim());
+            TxtPorc.Text = validarNumeros.FormatarValor(TxtPorc.Text.Trim());
+        }
+
+        private void TxtPorc_Enter(object sender, EventArgs e)
+        {
+            if (TxtPorc.Text == "0,00")
+            {
+                TxtPorc.Text = "";
+            }
+        }
+
+        private void TxtDesconto_TextChanged(object sender, EventArgs e)
+        {
+            validarNumeros = new ValidarNumeros();
+            TxtDesconto.Text = validarNumeros.Valor(TxtDesconto.Text.Trim());
+            TxtDesconto.Select(TxtDesconto.Text.Length, 0);
+        }
+
+        private void TxtDesconto_Leave(object sender, EventArgs e)
+        {
+            validarNumeros = new ValidarNumeros();
+            TxtDesconto.Text = validarNumeros.ZeroValor(TxtDesconto.Text.Trim());
+            TxtDesconto.Text = validarNumeros.FormatarValor(TxtDesconto.Text.Trim());
+        }
+
+        private void TxtDesconto_Enter(object sender, EventArgs e)
+        {
+            if (TxtDesconto.Text == "0,00")
+            {
+                TxtDesconto.Text = "";
+            }
+        }
+        #endregion
     }
 }

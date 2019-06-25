@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.DgvListaDep = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Competencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BtnExcluir = new System.Windows.Forms.Button();
             this.BtnAlterar = new System.Windows.Forms.Button();
             this.BtnGravar = new System.Windows.Forms.Button();
@@ -36,9 +39,6 @@
             this.TxtValor = new System.Windows.Forms.TextBox();
             this.MktCompetencia = new System.Windows.Forms.MaskedTextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Competencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListaDep)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,6 +61,29 @@
             this.DgvListaDep.Size = new System.Drawing.Size(323, 169);
             this.DgvListaDep.TabIndex = 21;
             this.DgvListaDep.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListaDep_CellDoubleClick);
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            // 
+            // Competencia
+            // 
+            this.Competencia.DataPropertyName = "Competencia";
+            this.Competencia.HeaderText = "Competencia";
+            this.Competencia.Name = "Competencia";
+            this.Competencia.ReadOnly = true;
+            this.Competencia.Visible = false;
+            // 
+            // Valor
+            // 
+            this.Valor.DataPropertyName = "Valor";
+            this.Valor.HeaderText = "Valor";
+            this.Valor.Name = "Valor";
+            this.Valor.ReadOnly = true;
             // 
             // BtnExcluir
             // 
@@ -111,6 +134,9 @@
             this.TxtValor.TabIndex = 16;
             this.TxtValor.Text = "0,00";
             this.TxtValor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TxtValor.TextChanged += new System.EventHandler(this.TxtValor_TextChanged);
+            this.TxtValor.Enter += new System.EventHandler(this.TxtValor_Enter);
+            this.TxtValor.Leave += new System.EventHandler(this.TxtValor_Leave);
             // 
             // MktCompetencia
             // 
@@ -128,29 +154,6 @@
             this.label1.Size = new System.Drawing.Size(69, 13);
             this.label1.TabIndex = 10;
             this.label1.Text = "Competência";
-            // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Visible = false;
-            // 
-            // Competencia
-            // 
-            this.Competencia.DataPropertyName = "Competencia";
-            this.Competencia.HeaderText = "Competencia";
-            this.Competencia.Name = "Competencia";
-            this.Competencia.ReadOnly = true;
-            this.Competencia.Visible = false;
-            // 
-            // Valor
-            // 
-            this.Valor.DataPropertyName = "Valor";
-            this.Valor.HeaderText = "Valor";
-            this.Valor.Name = "Valor";
-            this.Valor.ReadOnly = true;
             // 
             // FrmCadDep
             // 
