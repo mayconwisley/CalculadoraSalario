@@ -302,6 +302,7 @@ namespace CalculadoraSalario
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
             MktCompetencia.Text = DateTime.Now.ToString("MM/yyyy");
+            dtCompetencia = DateTime.Parse(MktCompetencia.Text);
         }
 
         private void BtnRemover_Click(object sender, EventArgs e)
@@ -348,9 +349,9 @@ namespace CalculadoraSalario
             try
             {
                 TxtDep.Text = validarNumeros.ZeroNumero(TxtDep.Text.Trim());
-                qtdDepentende = int.Parse(TxtDep.Text.Trim());
                 TxtDep.Text = validarNumeros.FormatarNumero(TxtDep.Text.Trim());
 
+                qtdDepentende = int.Parse(TxtDep.Text.Trim());
 
                 vlrDependente = negDepen.ValorDependente(dtCompetencia);
                 vlrDependente = vlrDependente * qtdDepentende;
