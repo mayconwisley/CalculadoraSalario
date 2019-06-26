@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.MenuPrincipal = new System.Windows.Forms.MenuStrip();
             this.MenuTabelas = new System.Windows.Forms.ToolStripMenuItem();
             this.SubTabelaInss = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,6 +55,9 @@
             this.LblinfVT = new System.Windows.Forms.Label();
             this.LblInfOutroValores = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.lklGitHub = new System.Windows.Forms.LinkLabel();
+            this.MktCompetencia = new System.Windows.Forms.MaskedTextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.MenuPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListaOutVlr)).BeginInit();
             this.SuspendLayout();
@@ -235,9 +238,9 @@
             // Valor
             // 
             this.Valor.DataPropertyName = "Valor";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle8.Format = "N2";
-            this.Valor.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "N2";
+            this.Valor.DefaultCellStyle = dataGridViewCellStyle2;
             this.Valor.HeaderText = "Valor";
             this.Valor.Name = "Valor";
             this.Valor.ReadOnly = true;
@@ -323,11 +326,42 @@
             this.label4.TabIndex = 18;
             this.label4.Text = "Maycon Wisley";
             // 
+            // lklGitHub
+            // 
+            this.lklGitHub.AutoSize = true;
+            this.lklGitHub.Location = new System.Drawing.Point(12, 440);
+            this.lklGitHub.Name = "lklGitHub";
+            this.lklGitHub.Size = new System.Drawing.Size(38, 13);
+            this.lklGitHub.TabIndex = 19;
+            this.lklGitHub.TabStop = true;
+            this.lklGitHub.Text = "Github";
+            this.lklGitHub.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lklGitHub_LinkClicked);
+            // 
+            // MktCompetencia
+            // 
+            this.MktCompetencia.Location = new System.Drawing.Point(206, 80);
+            this.MktCompetencia.Mask = "00/0000";
+            this.MktCompetencia.Name = "MktCompetencia";
+            this.MktCompetencia.Size = new System.Drawing.Size(67, 20);
+            this.MktCompetencia.TabIndex = 20;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(204, 64);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(69, 13);
+            this.label5.TabIndex = 21;
+            this.label5.Text = "Competência";
+            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(378, 458);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.MktCompetencia);
+            this.Controls.Add(this.lklGitHub);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.LblInfOutroValores);
             this.Controls.Add(this.LblinfVT);
@@ -354,6 +388,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Calculadora Salário Simples";
+            this.Load += new System.EventHandler(this.FrmPrincipal_Load);
             this.MenuPrincipal.ResumeLayout(false);
             this.MenuPrincipal.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListaOutVlr)).EndInit();
@@ -390,6 +425,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Valor;
         private System.Windows.Forms.Label LblInfOutroValores;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.LinkLabel lklGitHub;
+        private System.Windows.Forms.MaskedTextBox MktCompetencia;
+        private System.Windows.Forms.Label label5;
     }
 }
 

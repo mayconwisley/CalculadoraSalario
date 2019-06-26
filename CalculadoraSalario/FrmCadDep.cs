@@ -100,8 +100,10 @@ namespace CalculadoraSalario
         {
             try
             {
+                dtCompetencia = DateTime.Parse(DgvListaDep.Rows[e.RowIndex].Cells["Competencia"].Value.ToString());
                 idDepen = int.Parse(DgvListaDep.Rows[e.RowIndex].Cells["Id"].Value.ToString());
                 TxtValor.Text = DgvListaDep.Rows[e.RowIndex].Cells["Valor"].Value.ToString();
+                MktCompetencia.Text = dtCompetencia.ToString("MM/yyyy");
                 BtnAlterar.Enabled = true;
                 BtnExcluir.Enabled = true;
                 BtnGravar.Enabled = false;

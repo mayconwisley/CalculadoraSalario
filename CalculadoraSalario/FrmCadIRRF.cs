@@ -105,8 +105,9 @@ namespace CalculadoraSalario
         {
             try
             {
+                dtCompetencia = DateTime.Parse(DgvListaIRRF.Rows[e.RowIndex].Cells["Competencia"].Value.ToString());
                 idIrrf = int.Parse(DgvListaIRRF.Rows[e.RowIndex].Cells["Id"].Value.ToString());
-                MktComp.Text = DgvListaIRRF.Rows[e.RowIndex].Cells["Competencia"].Value.ToString();
+                MktComp.Text = dtCompetencia.ToString("MM/yyyy");
                 TxtLimite.Text = DgvListaIRRF.Rows[e.RowIndex].Cells["Limite"].Value.ToString();
                 TxtDesconto.Text = DgvListaIRRF.Rows[e.RowIndex].Cells["Desconto"].Value.ToString();
                 TxtPorc.Text = DgvListaIRRF.Rows[e.RowIndex].Cells["Porc"].Value.ToString();

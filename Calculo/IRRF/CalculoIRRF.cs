@@ -21,9 +21,3 @@
         }
     }
 }
-
-/*
- * SELECT Min(Desconto),Min(Porc)
-FROM IRRF
-WHERE (Limite >= (SELECT Min(Limite) FROM IRRF)) AND (Limite <= 3271.38) 
- */

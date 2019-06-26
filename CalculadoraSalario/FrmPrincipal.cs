@@ -5,7 +5,9 @@ using Calculo.Vale_Transporte;
 using Negocio;
 using System;
 using System.Data;
+using System.Diagnostics;
 using System.Windows.Forms;
+
 namespace CalculadoraSalario
 {
     public partial class FrmPrincipal : Form
@@ -15,7 +17,7 @@ namespace CalculadoraSalario
             InitializeComponent();
         }
 
-        #region Formularios
+        #region Formulários
         FrmCadINSS cadINSS;
         FrmCadIRRF cadIRRF;
         FrmCadDep cadDep;
@@ -48,10 +50,11 @@ namespace CalculadoraSalario
         #endregion
 
         #region Funções
+        //Recebe o parametro do salario para fazer o calculo do INSS
         private void Calculo_INSS(decimal salario)
         {
             negInss = new NegInss();
-            dtCompetencia = DateTime.Parse(DateTime.Now.ToString("MM/yyyy"));
+            dtCompetencia = DateTime.Parse(MktCompetencia.Text);
             try
             {
                 porcInss = negInss.PorcTeto(salario);
@@ -75,7 +78,7 @@ namespace CalculadoraSalario
         {
             negIrrf = new NegIrrf();
             negDepen = new NegDepen();
-            dtCompetencia = DateTime.Parse(DateTime.Now.ToString("MM/yyyy"));
+            dtCompetencia = DateTime.Parse(MktCompetencia.Text);
             try
             {
                 porcIrrf = negIrrf.PorcLimite(salario);
@@ -126,7 +129,7 @@ namespace CalculadoraSalario
                              "\n\nSalário Liquido.....: " + calcSalario.ToString("#,##0.00");
 
         }
-
+        //Adicionar valores no grid
         private void AdicionarOutrosDescontos(string tipo, decimal valor)
         {
             outroValores = new DataTable();
@@ -139,7 +142,7 @@ namespace CalculadoraSalario
                 MessageBox.Show(ex.Message);
             }
         }
-
+        //Calcular valores do grid
         private void Calculo_OutrasVerbas()
         {
             string strTipo;
@@ -172,7 +175,7 @@ namespace CalculadoraSalario
                 MessageBox.Show(ex.Message);
             }
         }
-
+        //Remover valores do grid
         private bool RemoverOutrosDescontos(int indexOutroValor)
         {
             try
@@ -289,6 +292,16 @@ namespace CalculadoraSalario
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void lklGitHub_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("https://github.com/mayconwisley/CalculadoraSalario");
+        }
+
+        private void FrmPrincipal_Load(object sender, EventArgs e)
+        {
+            MktCompetencia.Text = DateTime.Now.ToString("MM/yyyy");
         }
 
         private void BtnRemover_Click(object sender, EventArgs e)

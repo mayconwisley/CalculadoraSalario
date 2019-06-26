@@ -109,10 +109,12 @@ namespace CalculadoraSalario
         {
             try
             {
+                dtCompetencia = DateTime.Parse(DgvListaINSS.Rows[e.RowIndex].Cells["Competencia"].Value.ToString());
                 idInss = int.Parse(DgvListaINSS.Rows[e.RowIndex].Cells["Id"].Value.ToString());
                 TxtFaixa.Text = DgvListaINSS.Rows[e.RowIndex].Cells["Faixa"].Value.ToString();
                 TxtTeto.Text = DgvListaINSS.Rows[e.RowIndex].Cells["Teto_Faixa"].Value.ToString();
                 TxtPorc.Text = DgvListaINSS.Rows[e.RowIndex].Cells["Porc_Faixa"].Value.ToString();
+                MktComp.Text = dtCompetencia.ToString("MM/yyyy");
                 BtnAlterar.Enabled = true;
                 BtnExcluir.Enabled = true;
                 BtnGravar.Enabled = false;
