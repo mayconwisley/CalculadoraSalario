@@ -10,5 +10,14 @@
             return VlrInss;
         }
 
+        public static decimal NovoInss(decimal salario)
+        {
+
+
+
+            return 0;
+
+        }
+
     }
 }

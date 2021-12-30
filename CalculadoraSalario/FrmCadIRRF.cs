@@ -194,5 +194,11 @@ namespace CalculadoraSalario
             }
         }
         #endregion
+
+        private void MktComp_Leave(object sender, EventArgs e)
+        {
+            dtCompetencia = DateTime.Parse(MktComp.Text);
+            ListarIrrf(dtCompetencia);
+        }
     }
 }

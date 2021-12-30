@@ -19,6 +19,7 @@ namespace CalculadoraSalario
         #region Variaveis e Objetos
         int idInss;
         DateTime dtCompetencia;
+        char op = 'N';
         #endregion
         #region Funções
         private void Cadastro(char opc)
@@ -50,7 +51,7 @@ namespace CalculadoraSalario
                         break;
                 }
                 Reset();
-                ListarInss(dtCompetencia);
+                ListarInss(dtCompetencia, op);
             }
             catch (Exception ex)
             {
@@ -58,12 +59,19 @@ namespace CalculadoraSalario
             }
         }
 
-        private void ListarInss(DateTime competencia)
+        private void ListarInss(DateTime competencia, char opc)
         {
             negInss = new NegInss();
             try
             {
-                DgvListaINSS.DataSource = negInss.ListaInss(competencia);
+                if (opc == 'T')
+                {
+                    DgvListaINSS.DataSource = negInss.ListaInssTudo();
+                }
+                else
+                {
+                    DgvListaINSS.DataSource = negInss.ListaInss(competencia);
+                }
             }
             catch (Exception ex)
             {
@@ -100,9 +108,23 @@ namespace CalculadoraSalario
 
         private void FrmCadINSS_Load(object sender, EventArgs e)
         {
-            dtCompetencia = DateTime.Parse(DateTime.Now.ToString("MM/yyyy"));
-            MktComp.Text = dtCompetencia.ToString("MM/yyyy");
-            ListarInss(dtCompetencia);
+            NegInss negInss = new NegInss();
+
+
+            try
+            {
+                dtCompetencia = negInss.UltimaCompetencia();
+
+                MktComp.Text = dtCompetencia.ToString("MM/yyyy");
+
+
+                ListarInss(dtCompetencia, op);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void DgvListaINSS_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -192,6 +214,29 @@ namespace CalculadoraSalario
                 TxtPorc.Text = "";
             }
         }
+
+        private void MktComp_Leave(object sender, EventArgs e)
+        {
+            dtCompetencia = DateTime.Parse(MktComp.Text);
+            ListarInss(dtCompetencia, op);
+        }
         #endregion
+
+        private void CbListarTudo_CheckedChanged(object sender, EventArgs e)
+        {
+            if (CbListarTudo.Checked)
+            {
+                op = 'T';
+                ListarInss(dtCompetencia, op);
+                MktComp.Enabled = false;
+            }
+            else
+            {
+                op = 'N';
+                ListarInss(dtCompetencia, op);
+                MktComp.Enabled = true;
+            }
+
+        }
     }
 }

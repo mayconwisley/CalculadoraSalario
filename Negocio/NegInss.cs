@@ -72,6 +72,7 @@ namespace Negocio
                 throw new Exception(ex.Message);
             }
         }
+
         public DataTable ListaInss(DateTime Competencia)
         {
             Crud = new CRUD();
@@ -92,6 +93,26 @@ namespace Negocio
                 throw new Exception(ex.Message);
             }
         }
+
+        public DataTable ListaInssTudo()
+        {
+            Crud = new CRUD();
+            SQL = "SELECT Id, Competencia, Faixa, Teto_Faixa, Porc_Faixa " +
+                  "FROM INSS " +
+                  "ORDER BY Competencia DESC, Teto_Faixa ASC";
+            try
+            {
+
+                Crud.LimparParametro();
+                DataTable dataTable = Crud.Consulta(CommandType.Text, SQL);
+                return dataTable;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         public decimal PorcTeto(decimal salario)
         {
             decimal porc = 0;
@@ -147,6 +168,36 @@ namespace Negocio
             catch (Exception ex)
             {
 
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public DateTime UltimaCompetencia()
+        {
+            Crud = new CRUD();
+            SQL = "SELECT Competencia " +
+                  "FROM INSS " +
+                  "GROUP BY Competencia " +
+                  "ORDER BY Competencia DESC ";
+            try
+            {
+                Crud.LimparParametro();
+                string dtCompetencia = Crud.Executar(CommandType.Text, SQL).ToString();
+
+
+
+
+                if (dtCompetencia != null)
+                {
+                    return DateTime.Parse(dtCompetencia);
+                }
+                else
+                {
+                    return DateTime.Today;
+                }
+            }
+            catch (Exception ex)
+            {
                 throw new Exception(ex.Message);
             }
         }

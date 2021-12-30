@@ -227,6 +227,7 @@
             this.MktComp.Name = "MktComp";
             this.MktComp.Size = new System.Drawing.Size(69, 20);
             this.MktComp.TabIndex = 1;
+            this.MktComp.Leave += new System.EventHandler(this.MktComp_Leave);
             // 
             // label1
             // 

@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.MktComp = new System.Windows.Forms.MaskedTextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -48,6 +48,7 @@
             this.Faixa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Teto_Faixa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Porc_Faixa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CbListarTudo = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListaINSS)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,6 +68,7 @@
             this.MktComp.Name = "MktComp";
             this.MktComp.Size = new System.Drawing.Size(69, 20);
             this.MktComp.TabIndex = 1;
+            this.MktComp.Leave += new System.EventHandler(this.MktComp_Leave);
             // 
             // label2
             // 
@@ -197,13 +199,13 @@
             // 
             this.Competencia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Competencia.DataPropertyName = "Competencia";
-            dataGridViewCellStyle25.Format = "MM/yyyy";
-            dataGridViewCellStyle25.NullValue = null;
-            this.Competencia.DefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle4.Format = "MM/yyyy";
+            dataGridViewCellStyle4.NullValue = null;
+            this.Competencia.DefaultCellStyle = dataGridViewCellStyle4;
             this.Competencia.HeaderText = "Competência";
             this.Competencia.Name = "Competencia";
             this.Competencia.ReadOnly = true;
-            this.Competencia.Visible = false;
+            this.Competencia.Width = 94;
             // 
             // Faixa
             // 
@@ -218,10 +220,10 @@
             // 
             this.Teto_Faixa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Teto_Faixa.DataPropertyName = "Teto_Faixa";
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle26.Format = "N2";
-            dataGridViewCellStyle26.NullValue = null;
-            this.Teto_Faixa.DefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "N2";
+            dataGridViewCellStyle5.NullValue = null;
+            this.Teto_Faixa.DefaultCellStyle = dataGridViewCellStyle5;
             this.Teto_Faixa.HeaderText = "Teto_Faixa";
             this.Teto_Faixa.Name = "Teto_Faixa";
             this.Teto_Faixa.ReadOnly = true;
@@ -231,20 +233,32 @@
             // 
             this.Porc_Faixa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Porc_Faixa.DataPropertyName = "Porc_Faixa";
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle27.Format = "N2";
-            dataGridViewCellStyle27.NullValue = null;
-            this.Porc_Faixa.DefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.Format = "N2";
+            dataGridViewCellStyle6.NullValue = null;
+            this.Porc_Faixa.DefaultCellStyle = dataGridViewCellStyle6;
             this.Porc_Faixa.HeaderText = "Porc_Faixa";
             this.Porc_Faixa.Name = "Porc_Faixa";
             this.Porc_Faixa.ReadOnly = true;
             this.Porc_Faixa.Width = 85;
+            // 
+            // CbListarTudo
+            // 
+            this.CbListarTudo.AutoSize = true;
+            this.CbListarTudo.Location = new System.Drawing.Point(87, 27);
+            this.CbListarTudo.Name = "CbListarTudo";
+            this.CbListarTudo.Size = new System.Drawing.Size(79, 17);
+            this.CbListarTudo.TabIndex = 10;
+            this.CbListarTudo.Text = "Listar Tudo";
+            this.CbListarTudo.UseVisualStyleBackColor = true;
+            this.CbListarTudo.CheckedChanged += new System.EventHandler(this.CbListarTudo_CheckedChanged);
             // 
             // FrmCadINSS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(349, 302);
+            this.Controls.Add(this.CbListarTudo);
             this.Controls.Add(this.DgvListaINSS);
             this.Controls.Add(this.BtnExcluir);
             this.Controls.Add(this.BtnAlterar);
@@ -291,5 +305,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Faixa;
         private System.Windows.Forms.DataGridViewTextBoxColumn Teto_Faixa;
         private System.Windows.Forms.DataGridViewTextBoxColumn Porc_Faixa;
+        private System.Windows.Forms.CheckBox CbListarTudo;
     }
 }
